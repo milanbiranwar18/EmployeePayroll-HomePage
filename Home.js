@@ -2,9 +2,16 @@ let empParrollList;
 
 window.addEventListener('DOMContentLoaded',(event)=>
 {
+    empParrollList=getEmployeePayrollDataFromStorage();
     createInnerHtml();
     document.querySelector('.emp-count').textContent=empParrollList.length;
 });
+
+const getEmployeePayrollDataFromStorage=()=>
+{
+    return localStorage.getItem('EmployeePayrollList')?
+    JSON.parse(localStorage.getItem('EmployeePayrollList')):[];
+}
 
 const createInnerHtml=()=>
 {
@@ -12,7 +19,7 @@ const createInnerHtml=()=>
     "<th>Salary</th><th>Start Date</th><th>Actions</th>";
 
     let innerHtml=`${headerHTml}`;
-     empParrollList=createEmployeePayrollJSON();
+    // empParrollList=createEmployeePayrollJSON();
     for(const empParrollData of empParrollList)
      { 
 
@@ -51,7 +58,7 @@ const getDepthtml=(depList)=>
     return depHtml;
 }
 
-
+/*
 const createEmployeePayrollJSON=()=>
 {
     let empPayrollListLocal=
@@ -132,3 +139,4 @@ return empPayrollListLocal;
 
 }
 
+*/
